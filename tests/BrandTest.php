@@ -47,8 +47,28 @@
             $this->assertEquals($new_brand2, $result);
         }
 
+        function test_addAndGetBrandStores()
+        {
+            $name = "Adidas";
+            $new_brand = new Brand($name);
+            $new_brand->save();
+            $name = "Shoetopia";
+            $address = "12 Water St, Portland, OR 97219";
+            $phone_number = "503-990-8876";
+            $new_store = new Store($name, $address, $phone_number);
+            $new_store->save();
+            $name2 = "Best Shoe Deals";
+            $address2 = "9 Best St, Portland, OR 97201";
+            $phone_number2 = "503-112-5567";
+            $new_store2 = new Store($name2, $address2, $phone_number2);
+            $new_store2->save();
 
+            $new_brand->addStore($new_store);
+            $new_brand->addStore($new_store2);
+            $result = $new_brand->getStores();
 
+            $this->assertEquals([$new_store, $new_store2], $result);
+        }
 
 
 

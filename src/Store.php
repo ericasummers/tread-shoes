@@ -96,6 +96,18 @@
             return $found_store = new Store($name, $address, $phone_number, $id);
         }
 
+        function addBrand($new_brand)
+        {
+
+
+        }
+
+        function getBrands()
+        {
+
+            
+        }
+
     }
 
 

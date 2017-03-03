@@ -67,6 +67,18 @@
             $id = $rs[0]['id'];
             return $found_brand = new Brand($name, $id);
         }
+
+        function addStore($new_store)
+        {
+
+
+        }
+
+        function getStores()
+        {
+
+            
+        }
     }
 
 ?>
