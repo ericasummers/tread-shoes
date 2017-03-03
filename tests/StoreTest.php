@@ -129,6 +129,28 @@
             $this->assertEquals([$new_brand2], $result);
         }
 
+        function test_removeAllBrands()
+        {
+            $name = "Shoetopia";
+            $address = "12 Water St, Portland, OR 97219";
+            $phone_number = "503-990-8876";
+            $new_store = new Store($name, $address, $phone_number);
+            $new_store->save();
+            $name = "Adidas";
+            $new_brand = new Brand($name);
+            $new_brand->save();
+            $name2 = "New Balance";
+            $new_brand2 = new Brand($name2);
+            $new_brand2->save();
+
+            $new_store->addBrand($new_brand);
+            $new_store->addBrand($new_brand2);
+            $new_store->removeAllBrands();
+            $result = $new_store->getBrands();
+
+            $this->assertEquals([], $result);
+        }
+
     }
 
 
