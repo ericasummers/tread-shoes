@@ -29,7 +29,9 @@
     });
 
     $app->post("/add_store", function() use ($app) {
-        $new_store = new Store($_POST['name'], $_POST['address'], $_POST['phone_number']);
+        $name = $_POST['name'];
+        $name = str_replace("'", "", $name);
+        $new_store = new Store($name, $_POST['address'], $_POST['phone_number']);
         $new_store->save();
 
         return $app['twig']->render('stores.html.twig', array('stores' => Store::getAll(), 'brands' => Brand::getAll()));
@@ -62,7 +64,9 @@
 
     $app->patch("/update_store/{id}", function($id) use ($app) {
         $selected_store = Store::find($id);
-        $selected_store->update($_POST['name'], $_POST['address'], $_POST['phone_number']);
+        $name = $_POST['name'];
+        $name = str_replace("'", "", $name);
+        $selected_store->update($name, $_POST['address'], $_POST['phone_number']);
 
         return $app['twig']->render('store.html.twig', array('store' => $selected_store, 'brands' => Brand::getAll(), 'stores' => Store::getAll(), 'store_brands' => $selected_store->getBrands()));
     });
@@ -73,7 +77,9 @@
     });
 
     $app->post("/add_brand", function() use ($app) {
-        $new_brand = new Brand($_POST['name']);
+        $name = $_POST['name'];
+        $name = str_replace("'", "", $name);
+        $new_brand = new Brand($name);
         $new_brand->save();
 
         return $app['twig']->render('brands.html.twig', array('stores' => Store::getAll(), 'brands' => Brand::getAll()));
@@ -94,7 +100,9 @@
 
     $app->patch("/update_brand/{id}", function($id) use ($app) {
         $brand = Brand::find($id);
-        $brand->update($_POST['name']);
+        $name = $_POST['name'];
+        $name = str_replace("'", "", $name);
+        $brand->update($name);
 
         return $app['twig']->render('brands.html.twig', array('stores' => Store::getAll(), 'brands' => Brand::getAll()));
     });

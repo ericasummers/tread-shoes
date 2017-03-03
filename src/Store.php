@@ -59,7 +59,7 @@
         {
             $GLOBALS['DB']->exec("INSERT IGNORE INTO stores (name, address, phone_number) VALUES ('{$this->getName()}', '{$this->getAddress()}', '{$this->getPhoneNumber()}');");
 
-            $query = $GLOBALS['DB']->query("SELECT id FROM stores WHERE name = '{$this->getName()}' AND address = '{$this->getAddress()}';");
+            $query = $GLOBALS['DB']->query("SELECT id FROM stores WHERE name = '{$this->getName()}';");
             $rs = $query->fetchAll(PDO::FETCH_ASSOC);
             $this->id = $rs[0]['id'];
         }
