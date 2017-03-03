@@ -1,0 +1,39 @@
+{% extends "tread_template.html.twig" %}
+
+{% block leftsection %}
+
+    <h3>Tread Stores</h3>
+
+    {% if stores is not empty %}
+        {% for store in stores %}
+            <h4><a href="/stores/{{ store.getId }}">{{ store.getName }}</a></h4>
+        {% endfor %}
+    {% else %}
+        <h4>There are no stores currently in the database.</h4>
+    {% endif %}
+
+{% endblock %}
+
+{% block rightsection %}
+
+    <h4>Add a Store:</h4>
+
+    <form action="/add_store" method="post">
+        <div class="form-group">
+            <label for="name">Store Name:</label>
+            <input type="text" name="name" placeholder="Shoetopia" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <input type="text" name="address" placeholder="12 SW Water St, Portland, OR 97219" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="phone_number">Phone Number:</label>
+            <input type="text" name="phone_number" placeholder="503-112-2020" class="form-control" required>
+        </div>
+
+            <button type="submit" class="btn btn-info">Add Store!</button>
+        </div>
+    </form>
+
+{% endblock %}

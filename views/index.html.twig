@@ -4,6 +4,7 @@
 
     <h3>Stores in the Tread Database</h3>
 
+    <h4><a href="/stores">Add/View/Modify Stores</a></h4>
     {% if stores is not empty %}
         {% for store in stores %}
             <h4><a href="/stores/{{ store.getId }}">{{ store.getName }}</a></h4>
@@ -18,6 +19,7 @@
 
     <h3>Brands in the Tread Database</h3>
 
+    <h4><a href="/brands">Add/View/Modify Brands</a></h4>
     {% if brands is not empty %}
         {% for brand in brands %}
             <h4><a href="/brands/{{ brand.getId }}">{{ brand.getName }}</a></h4>
