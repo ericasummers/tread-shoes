@@ -47,6 +47,13 @@
         return $app['twig']->render('store.html.twig', array('store' => $selected_store, 'brands' => Brand::getAll(), 'stores' => Store::getAll(), 'store_brands' => $selected_store->getBrands()));
     });
 
+    $app->delete("/store/{id}", function($id) use ($app) {
+        $store = Store::find($id);
+        $store->delete();
+
+        return $app['twig']->render('stores.html.twig', array('stores' => Store::getAll(), 'brands' => Brand::getAll()));
+    });
+
 
     return $app;
 ?>

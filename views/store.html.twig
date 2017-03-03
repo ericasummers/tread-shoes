@@ -7,6 +7,7 @@
     <h4><span class="descriptors">Address</span>: {{ store.getAddress }}</h4>
     <h4><span class="descriptors">Phone Number</span>: {{ store.getPhoneNumber }}</h4>
 
+    <a href="/stores">Back to Stores List</a>
     <h3>Brands available at this store:</h3>
     {% if store_brands is not empty %}
         {% for brand in store_brands %}
@@ -26,8 +27,9 @@
 
 {% block rightsection %}
 
-    <h4>All shoe brands:</h4>
+    <h3>All shoe brands:</h3>
 
+    <a href="/brands">Add a Brand</a>
     {% if brands is not empty %}
         {% for brand in brands %}
             <h4><a href="/brand/{{ brand.getId }}">{{ brand.getName }}</a>
