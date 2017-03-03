@@ -99,6 +99,18 @@
         return $app['twig']->render('brands.html.twig', array('stores' => Store::getAll(), 'brands' => Brand::getAll()));
     });
 
+    $app->get("/brand/{id}", function($id) use ($app) {
+        $brand = Brand::find($id);
+
+        return $app['twig']->render('brand.html.twig', array('stores' => Store::getAll(), 'brands' => Brand::getAll(), 'brand_stores' => $brand->getStores(), 'brand' => $brand));
+    });
+
+    $app->post("/view_brands", function() use ($app) {
+        $brand = Brand::find($_POST['brands_list']);
+
+        return $app['twig']->render('brand.html.twig', array('stores' => Store::getAll(), 'brands' => Brand::getAll(), 'brand_stores' => $brand->getStores(), 'brand' => $brand));
+    });
+
 
     return $app;
 ?>
