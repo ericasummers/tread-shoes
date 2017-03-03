@@ -118,6 +118,13 @@
         return $app['twig']->render('store.html.twig', array('store' => $store, 'brands' => Brand::getAll(), 'stores' => Store::getAll(), 'store_brands' => $store->getBrands()));
     });
 
+    $app->post("/remove_brand/{store_id}/{brand_id}", function($store_id, $brand_id) use ($app) {
+        $store = Store::find($store_id);
+        $store->removeBrand(Brand::find($brand_id));
+
+        return $app['twig']->render('store.html.twig', array('store' => $store, 'brands' => Brand::getAll(), 'stores' => Store::getAll(), 'store_brands' => $store->getBrands()));
+    });
+
 
     return $app;
 ?>
