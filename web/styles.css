@@ -1,3 +1,28 @@
+.inline-forms {
+    float: right;
+}
+
+.btn {
+    padding: 2px;
+}
+
+#add-brand-button {
+    padding: 2px;
+}
+
+.left-panel {
+    float: left;
+    width: 200px;
+    display: inline-block;
+}
+
+.right-panel {
+    float: right;
+    width: 30%;
+    display: inline-block;
+}
+
+
 #footer {
     display: block;
     padding-bottom: 2px;
@@ -8,13 +33,4 @@
     margin-left: 37%;
     text-align: center;
     font-size: 14px;
-}
-
-.inline-forms {
-    float: right;
-}
-
-.update-store-section {
-    padding: 0;
-    margin: 0;
 }

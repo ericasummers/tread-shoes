@@ -11,14 +11,15 @@
     <h3>Brands available at this store:</h3>
     {% if store_brands is not empty %}
         {% for brand in store_brands %}
-            <h4><a href="/brand/{{ brand.getId }}">{{ brand.getName }}</a>
-                <div class="inline-forms">
-                    <form action="/remove_brand/{{ store.getId }}/{{ brand.getId }}" method="post" style="display: inline">
-                        <button type="submit" class="btn btn-danger"><i class="fa fa-minus-square" aria-hidden="true"></i> Remove Brand from Store</button>
-                    </form>
-                </div>
-            </h4>
+        <h4><a href="/brand/{{ brand.getId }}">{{ brand.getName }}</a>
+            <div class="inline-forms">
+                <form action="/remove_brand/{{ store.getId }}/{{ brand.getId }}" method="post" style="display: inline">
+                    <button type="submit" class="btn btn-warning"><i class="fa fa-minus-square" aria-hidden="true"></i> Remove from store</button>
+                </form>
+            </div>
+        </h4>
         {% endfor %}
+        <br><br>
         <form action="/remove_all_brands/{{ store.getId }}" method="post" style="display: inline">
             <button type="submit" class="btn btn-danger"><i class="fa fa-minus-square" aria-hidden="true"></i> Remove All Brands</button>
         </form>
@@ -38,7 +39,7 @@
             <h4><a href="/brand/{{ brand.getId }}">{{ brand.getName }}</a>
                 <div class="inline-forms">
                     <form action="/add_brand/{{ store.getId }}/{{ brand.getId }}" method="post" style="display: inline">
-                        <button type="submit" class="btn btn-success"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Brand to Store</button>
+                        <button type="submit" class="btn btn-info" id="add-brand-button"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Brand to Store</button>
                     </form>
                 </div>
             </h4>
