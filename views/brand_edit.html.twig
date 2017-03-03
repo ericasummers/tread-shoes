@@ -1,0 +1,32 @@
+{% extends "tread_template.html.twig" %}
+
+{% block leftsection %}
+
+    <div class="update-brand-section">
+        <h3>Update Brand:</h3>
+
+        <form action="/update_brand/{{ brand.getId }}" method="post">
+            <input type="hidden" name="_method" value="patch">
+            <div class="form-group">
+                <label for="name">Brand Name:</label>
+                <input type="text" name="name" value="{{ brand.getName }}" class="form-control" required>
+            </div>
+
+                <button type="submit" class="btn btn-info"><i class="fa fa-pencil-square" aria-hidden="true"></i> Update Brand!</button>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block rightsection %}
+
+    <h3>Current Brand Info</h3>
+
+    <h4>Name: {{ brand.getName }}</h4>
+
+    <a href="/brand/{{ brand.getId }}">Back to Brand Page</a>
+    <br>
+    <a href="/brands">Back to Brands List</a>
+
+{% endblock %}

@@ -79,6 +79,26 @@
         return $app['twig']->render('brands.html.twig', array('stores' => Store::getAll(), 'brands' => Brand::getAll()));
     });
 
+    $app->delete("/brand/{id}", function($id) use ($app) {
+        $brand = Brand::find($id);
+        $brand->delete();
+
+        return $app['twig']->render('brands.html.twig', array('stores' => Store::getAll(), 'brands' => Brand::getAll()));
+    });
+
+    $app->post("/brand/{id}/edit", function($id) use ($app) {
+        $brand = Brand::find($id);
+
+        return $app['twig']->render('brand_edit.html.twig', array('stores' => Store::getAll(), 'brands' => Brand::getAll(), 'brand' => $brand));
+    });
+
+    $app->patch("/update_brand/{id}", function($id) use ($app) {
+        $brand = Brand::find($id);
+        $brand->update($_POST['name']);
+
+        return $app['twig']->render('brands.html.twig', array('stores' => Store::getAll(), 'brands' => Brand::getAll()));
+    });
+
 
     return $app;
 ?>
