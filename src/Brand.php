@@ -56,6 +56,7 @@
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM brands;");
+            $GLOBALS['DB']->exec("DELETE FROM stores_brands;");
         }
 
         static function find($search_id)
@@ -70,14 +71,22 @@
 
         function addStore($new_store)
         {
-
-
+            $GLOBALS['DB']->exec("INSERT INTO stores_brands (store_id, brand_id) VALUES ({$new_store->getId()}, {$this->getId()});");
         }
 
         function getStores()
         {
-
-            
+            $all_brand_stores = array();
+            $returned_stores = $GLOBALS['DB']->query("SELECT stores.* FROM brands JOIN stores_brands ON (stores_brands.brand_id = brands.id) JOIN stores ON (stores.id = stores_brands.store_id) WHERE brands.id = {$this->getId()};");
+            foreach($returned_stores as $store) {
+                $name = $store['name'];
+                $address = $store['address'];
+                $phone_number = $store['phone_number'];
+                $id = $store['id'];
+                $new_store = new Store($name, $address, $phone_number, $id);
+                array_push($all_brand_stores, $new_store);
+            }
+            return $all_brand_stores;
         }
     }
 
