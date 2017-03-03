@@ -54,6 +54,19 @@
         return $app['twig']->render('stores.html.twig', array('stores' => Store::getAll(), 'brands' => Brand::getAll()));
     });
 
+    $app->post("/store/{id}/edit", function($id) use ($app) {
+        $store = Store::find($id);
+
+        return $app['twig']->render('store_edit.html.twig', array('stores' => Store::getAll(), 'brands' => Brand::getAll(), 'store' => $store));
+    });
+
+    $app->patch("/update_store/{id}", function($id) use ($app) {
+        $selected_store = Store::find($id);
+        $selected_store->update($_POST['name'], $_POST['address'], $_POST['phone_number']);
+
+        return $app['twig']->render('store.html.twig', array('store' => $selected_store, 'brands' => Brand::getAll(), 'stores' => Store::getAll(), 'store_brands' => $selected_store->getBrands()));
+    });
+
 
     return $app;
 ?>
