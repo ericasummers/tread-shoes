@@ -115,6 +115,11 @@
             return $all_store_brands;
         }
 
+        function delete()
+        {
+            
+        }
+
     }
 
 

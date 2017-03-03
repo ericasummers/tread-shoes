@@ -88,6 +88,13 @@
             }
             return $all_brand_stores;
         }
+
+        function delete()
+        {
+            
+        }
+
+
     }
 
 ?>

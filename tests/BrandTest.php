@@ -70,7 +70,20 @@
             $this->assertEquals([$new_store, $new_store2], $result);
         }
 
+        function test_delete()
+        {
+            $name = "Adidas";
+            $new_brand = new Brand($name);
+            $new_brand->save();
+            $name2 = "New Balance";
+            $new_brand2 = new Brand($name2);
+            $new_brand2->save();
 
+            $new_brand->delete();
+            $result = Brand::getAll();
+
+            $this->assertEquals([$new_brand2], $result);
+        }
 
 
     }
