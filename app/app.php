@@ -111,6 +111,13 @@
         return $app['twig']->render('brand.html.twig', array('stores' => Store::getAll(), 'brands' => Brand::getAll(), 'brand_stores' => $brand->getStores(), 'brand' => $brand));
     });
 
+    $app->post("/add_brand/{store_id}/{brand_id}", function($store_id, $brand_id) use ($app) {
+        $store = Store::find($store_id);
+        $store->addBrand(Brand::find($brand_id));
+
+        return $app['twig']->render('store.html.twig', array('store' => $store, 'brands' => Brand::getAll(), 'stores' => Store::getAll(), 'store_brands' => $store->getBrands()));
+    });
+
 
     return $app;
 ?>

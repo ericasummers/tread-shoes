@@ -13,7 +13,7 @@
         {% for brand in store_brands %}
             <h4><a href="/brand/{{ brand.getId }}">{{ brand.getName }}</a>
                 <div class="inline-forms">
-                    <form action="/remove-brand/{{ brand.getId }}" method="post" style="display: inline">
+                    <form action="/remove_brand/{{ brand.getId }}" method="post" style="display: inline">
                         <button type="submit" class="btn btn-success"><i class="fa fa-minus-square" aria-hidden="true"></i> Remove Brand from Store</button>
                     </form>
                 </div>
@@ -34,7 +34,7 @@
         {% for brand in brands %}
             <h4><a href="/brand/{{ brand.getId }}">{{ brand.getName }}</a>
                 <div class="inline-forms">
-                    <form action="/add-brand/{{ brand.getId }}" method="post" style="display: inline">
+                    <form action="/add_brand/{{ store.getId }}/{{ brand.getId }}" method="post" style="display: inline">
                         <button type="submit" class="btn btn-success"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Brand to Store</button>
                     </form>
                 </div>
