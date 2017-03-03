@@ -129,6 +129,11 @@
             $this->phone_number = $new_phone_number;
         }
 
+        function removeBrand($brand)
+        {
+            
+        }
+
     }
 
 

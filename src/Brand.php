@@ -101,6 +101,10 @@
             $this->name = $new_name;
         }
 
+        function removeStore($store)
+        {
+            
+        }
 
     }
 
