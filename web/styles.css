@@ -10,18 +10,17 @@
     padding: 2px;
 }
 
-.left-panel {
-    float: left;
-    width: 200px;
-    display: inline-block;
+.navbar {
+    border-radius: 0px;
 }
 
-.right-panel {
-    float: right;
-    width: 30%;
-    display: inline-block;
+select {
+    color: #323B37;
 }
 
+.panel-body {
+    overflow-y: auto;
+}
 
 #footer {
     display: block;

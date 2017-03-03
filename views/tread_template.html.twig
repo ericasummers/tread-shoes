@@ -13,9 +13,11 @@
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <a class="navbar-brand" href="/">Tread Home</a>
+                        <a href="/stores" class="navbar-brand">Tread Stores</a>
+                        <a href="/brands" class="navbar-brand">Tread Brands</a>
                     </div>
                     <ul class="nav navbar-nav navbar-right">
-                        <form action="/view_stores" method="post" class="form-control" style="display: inline">
+                        <form action="/view_stores" method="post" class="navbar-brand" style="display: inline">
                             {% if stores is not empty %}
                             <select name="stores_list" onchange="this.form.submit();">
                                 <option disabled selected value>Browse Stores</option>
@@ -26,7 +28,7 @@
                             {% else %}
                             {% endif %}
                         </form>
-                        <form action="/view_brands" method="post" class="form-control" style="display: inline">
+                        <form action="/view_brands" method="post" class="navbar-brand" style="display: inline">
                             {% if brands is not empty %}
                             <select name="brands_list" onchange="this.form.submit();">
                                 <option disabled selected value>Browse Brands</option>
