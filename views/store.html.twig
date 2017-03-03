@@ -14,11 +14,14 @@
             <h4><a href="/brand/{{ brand.getId }}">{{ brand.getName }}</a>
                 <div class="inline-forms">
                     <form action="/remove_brand/{{ store.getId }}/{{ brand.getId }}" method="post" style="display: inline">
-                        <button type="submit" class="btn btn-success"><i class="fa fa-minus-square" aria-hidden="true"></i> Remove Brand from Store</button>
+                        <button type="submit" class="btn btn-danger"><i class="fa fa-minus-square" aria-hidden="true"></i> Remove Brand from Store</button>
                     </form>
                 </div>
             </h4>
         {% endfor %}
+        <form action="/remove_all_brands/{{ store.getId }}" method="post" style="display: inline">
+            <button type="submit" class="btn btn-danger"><i class="fa fa-minus-square" aria-hidden="true"></i> Remove All Brands</button>
+        </form>
     {% else %}
         <h4>There are no brands currently offered at this store!</h4>
     {% endif %}
