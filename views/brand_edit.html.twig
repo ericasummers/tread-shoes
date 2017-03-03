@@ -3,12 +3,13 @@
 {% block rightsection %}
 
     <h3>Current Brand Info</h3>
-
+    <br>
     <h4>Name: {{ brand.getName }}</h4>
 
-    <a href="/brand/{{ brand.getId }}">Back to Brand Page</a>
     <br>
-    <a href="/brands">Back to Brands List</a>
+    <a href="/brand/{{ brand.getId }}"><i class="fa fa-home" aria-hidden="true"></i> Back to Brand Page</a>
+    <br><br>
+    <a href="/brands"><i class="fa fa-home" aria-hidden="true"></i> Back to Brands List</a>
 
 {% endblock %}
 
