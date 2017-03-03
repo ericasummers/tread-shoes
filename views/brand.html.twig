@@ -4,18 +4,20 @@
 
     <h3>{{ brand.getName }} Brand</h3>
 
-    <a href="/brands">Back to Brands List</a>
+    <h4><a href="/brands"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Brands List</a></h4>
+    <hr>
     <h3>Stores that carry this brand:</h3>
     {% if brand_stores is not empty %}
         {% for store in brand_stores %}
             <h4><a href="/store/{{ store.getId }}">{{ store.getName }}</a>
                 <div class="inline-forms">
                     <form action="/remove_store/{{ brand.getId }}/{{ store.getId }}" method="post" style="display: inline">
-                        <button type="submit" class="btn btn-danger"><i class="fa fa-minus-square" aria-hidden="true"></i> Remove Store from this Brand</button>
+                        <button type="submit" class="btn btn-warning"><i class="fa fa-minus-square" aria-hidden="true"></i> Remove Store from this Brand</button>
                     </form>
                 </div>
             </h4>
         {% endfor %}
+        <br><br>
         <form action="/remove_all_stores/{{ brand.getId }}" method="post" style="display: inline">
             <button type="submit" class="btn btn-danger"><i class="fa fa-minus-square" aria-hidden="true"></i> Remove All Stores</button>
         </form>
@@ -29,7 +31,8 @@
 
     <h3>All shoe stores:</h3>
 
-    <a href="/stores">Add a Store</a>
+    <h4><a href="/stores">Add a Store</a></h4>
+    <hr>
     {% if stores is not empty %}
         {% for store in stores %}
             <h4><a href="/store/{{ store.getId }}">{{ store.getName }}</a>
