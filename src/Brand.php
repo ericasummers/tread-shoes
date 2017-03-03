@@ -103,7 +103,7 @@
 
         function removeStore($store)
         {
-            
+            $GLOBALS['DB']->exec("DELETE FROM stores_brands WHERE store_id = {$store->getId()} AND brand_id = {$this->getId()};");
         }
 
     }

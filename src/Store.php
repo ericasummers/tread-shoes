@@ -131,7 +131,7 @@
 
         function removeBrand($brand)
         {
-            
+            $GLOBALS['DB']->exec("DELETE FROM stores_brands WHERE brand_id = {$brand->getId()} AND store_id = {$this->getId()};");
         }
 
     }
