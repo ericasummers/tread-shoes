@@ -93,9 +93,19 @@
             $this->assertEquals([$new_store2], $result);
         }
 
+        function test_update()
+        {
+            $name = "Shoetopia";
+            $address = "12 Water St, Portland, OR 97219";
+            $phone_number = "503-990-8876";
+            $new_store = new Store($name, $address, $phone_number);
+            $new_store->save();
+            $new_name = "Shoe World";
 
+            $new_store->update($new_name, $address, $phone_number);
 
-
+            $this->assertEquals($new_name, $new_store->getName());
+        }
 
 
     }

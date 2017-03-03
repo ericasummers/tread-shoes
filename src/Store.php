@@ -121,6 +121,12 @@
             $GLOBALS['DB']->exec("DELETE FROM stores_brands WHERE store_id = {$this->getId()};");
         }
 
+        function update($new_name, $new_address, $new_phone_number)
+        {
+
+            
+        }
+
     }
 
 
