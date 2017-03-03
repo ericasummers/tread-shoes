@@ -38,13 +38,13 @@
     $app->get("/store/{id}", function($id) use ($app) {
         $selected_store = Store::find($id);
 
-        return $app['twig']->render('store.html.twig');
+        return $app['twig']->render('store.html.twig', array('store' => $selected_store, 'brands' => Brand::getAll(), 'stores' => Store::getAll(), 'store_brands' => $selected_store->getBrands()));
     });
 
     $app->post("/view_stores", function() use ($app) {
         $selected_store = Store::find($_POST['stores_list']);
 
-        return $app['twig']->render('store.html.twig');
+        return $app['twig']->render('store.html.twig', array('store' => $selected_store, 'brands' => Brand::getAll(), 'stores' => Store::getAll(), 'store_brands' => $selected_store->getBrands()));
     });
 
 

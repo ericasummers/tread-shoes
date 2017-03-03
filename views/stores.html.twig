@@ -6,7 +6,17 @@
 
     {% if stores is not empty %}
         {% for store in stores %}
-            <h4><a href="/stores/{{ store.getId }}">{{ store.getName }}</a></h4>
+            <h4><a href="/store/{{ store.getId }}">{{ store.getName }}</a>
+                <div class="inline-forms">
+                    <form action="/store/{{ store.getId }}/edit" method="post" style="display: inline">
+                        <button type="submit" class="btn btn-success"><i class="fa fa-pencil-square" aria-hidden="true"></i> Update</button>
+                    </form>
+                    <form action="/store/{{ store.getId }}" method="post" style="display: inline">
+                        <input type="hidden" name="_method" value="delete">
+                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                    </form>
+                </div>
+            </h4>
         {% endfor %}
     {% else %}
         <h4>There are no stores currently in the database.</h4>
@@ -32,7 +42,7 @@
             <input type="text" name="phone_number" placeholder="503-112-2020" class="form-control" required>
         </div>
 
-            <button type="submit" class="btn btn-info">Add Store!</button>
+            <button type="submit" class="btn btn-info"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Store!</button>
         </div>
     </form>
 

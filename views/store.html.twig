@@ -1,0 +1,45 @@
+{% extends "tread_template.html.twig" %}
+
+{% block leftsection %}
+
+    <h3>{{ store.getName }}</h3>
+
+    <h4><span class="descriptors">Address</span>: {{ store.getAddress }}</h4>
+    <h4><span class="descriptors">Phone Number</span>: {{ store.getPhoneNumber }}</h4>
+
+    <h3>Brands available at this store:</h3>
+    {% if store_brands is not empty %}
+        {% for brand in store_brands %}
+            <h4><a href="/brand/{{ brand.getId }}">{{ brand.getName }}</a>
+                <div class="inline-forms">
+                    <form action="/remove-brand/{{ brand.getId }}" method="post" style="display: inline">
+                        <button type="submit" class="btn btn-success"><i class="fa fa-minus-square" aria-hidden="true"></i> Remove Brand from Store</button>
+                    </form>
+                </div>
+            </h4>
+        {% endfor %}
+    {% else %}
+        <h4>There are no brands currently offered at this store!</h4>
+    {% endif %}
+
+{% endblock %}
+
+{% block rightsection %}
+
+    <h4>All shoe brands:</h4>
+
+    {% if brands is not empty %}
+        {% for brand in brands %}
+            <h4><a href="/brand/{{ brand.getId }}">{{ brand.getName }}</a>
+                <div class="inline-forms">
+                    <form action="/add-brand/{{ brand.getId }}" method="post" style="display: inline">
+                        <button type="submit" class="btn btn-success"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Brand to Store</button>
+                    </form>
+                </div>
+            </h4>
+        {% endfor %}
+    {% else %}
+        <h4>There are no brands currently in the database.</h4>
+    {% endif %}
+
+{% endblock %}

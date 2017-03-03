@@ -9,3 +9,11 @@
     text-align: center;
     font-size: 14px;
 }
+
+.inline-forms {
+    float: right;
+}
+
+.descriptors {
+    color: red;
+}
