@@ -123,8 +123,10 @@
 
         function update($new_name, $new_address, $new_phone_number)
         {
-
-            
+            $GLOBALS['DB']->exec("UPDATE stores SET name = '{$new_name}', address = '{$new_address}', phone_number = '{$new_phone_number}' WHERE id = {$this->getId()};");
+            $this->name = $new_name;
+            $this->address = $new_address;
+            $this->phone_number = $new_phone_number;
         }
 
     }
