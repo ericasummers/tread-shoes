@@ -1,0 +1,41 @@
+{% extends "tread_template.html.twig" %}
+
+{% block leftsection %}
+
+    <h3>Tread Brands</h3>
+
+    {% if brands is not empty %}
+        {% for brand in brands %}
+            <h4><a href="/brand/{{ brand.getId }}">{{ brand.getName }}</a>
+                <div class="inline-forms">
+                    <form action="/brand/{{ brand.getId }}/edit" method="post" style="display: inline">
+                        <button type="submit" class="btn btn-success"><i class="fa fa-pencil-square" aria-hidden="true"></i> Update</button>
+                    </form>
+                    <form action="/brand/{{ brand.getId }}" method="post" style="display: inline">
+                        <input type="hidden" name="_method" value="delete">
+                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                    </form>
+                </div>
+            </h4>
+        {% endfor %}
+    {% else %}
+        <h4>There are no brands currently in the database.</h4>
+    {% endif %}
+
+{% endblock %}
+
+{% block rightsection %}
+
+    <h4>Add a Brand:</h4>
+
+    <form action="/add_brand" method="post">
+        <div class="form-group">
+            <label for="name">Brand Name:</label>
+            <input type="text" name="name" placeholder="Adidas" class="form-control" required>
+        </div>
+
+            <button type="submit" class="btn btn-info"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Brand!</button>
+        </div>
+    </form>
+
+{% endblock %}

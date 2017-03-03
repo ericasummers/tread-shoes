@@ -67,6 +67,11 @@
         return $app['twig']->render('store.html.twig', array('store' => $selected_store, 'brands' => Brand::getAll(), 'stores' => Store::getAll(), 'store_brands' => $selected_store->getBrands()));
     });
 
+    $app->get("/brands", function() use ($app) {
+
+        return $app['twig']->render('brands.html.twig', array('stores' => Store::getAll(), 'brands' => Brand::getAll()));
+    });
+
 
     return $app;
 ?>
