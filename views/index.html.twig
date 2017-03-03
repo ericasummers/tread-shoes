@@ -1,0 +1,30 @@
+{% extends "tread_template.html.twig" %}
+
+{% block leftsection %}
+
+    <h3>Stores in the Tread Database</h3>
+
+    {% if stores is not empty %}
+        {% for store in stores %}
+            <h4><a href="/stores/{{ store.getId }}">{{ store.getName }}</a></h4>
+        {% endfor %}
+    {% else %}
+        <h4>There are no stores in the system.</h4>
+    {% endif %}
+
+{% endblock %}
+
+{% block rightsection %}
+
+    <h3>Brands in the Tread Database</h3>
+
+    {% if brands is not empty %}
+        {% for brand in brands %}
+            <h4><a href="/brands/{{ brand.getId }}">{{ brand.getName }}</a></h4>
+        {% endfor %}
+    {% else %}
+        <h4>There are no brands in the system.</h4>
+    {% endif %}
+
+
+{% endblock %}
