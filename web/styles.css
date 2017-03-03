@@ -1,10 +1,27 @@
+body {
+    background-color:#202422;
+    color: #FFFFFF;
+}
+
+.panel {
+    background-color: #323B37;
+}
+
+a {
+    color: #11C695;
+}
+
+a:hover {
+    color: #11B3C6;
+}
+
 .inline-forms {
     float: right;
 }
 
-/*.btn {
+.btn {
     padding: 2px;
-}*/
+}
 
 #add-brand-button {
     padding: 2px;
@@ -33,4 +50,5 @@ body {
     height: 40px;
     clear: both;
     text-align: center;
+    color: #FFFFFF;
 }

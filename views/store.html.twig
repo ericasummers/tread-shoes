@@ -1,54 +1,72 @@
-{% extends "tread_template.html.twig" %}
+<!DOCTYPE html>
+<html>
+    {% include '/components/header.html.twig' %}
+    <body>
+        <div class="container">
+            {% include '/components/navbar.html.twig' %}
 
-{% block leftsection %}
 
-    <h3>{{ store.getName }}</h3>
+            <h1><a href="/">Welcome to the Tread Shoes Database</a></h1>
 
-    <h4>Address: {{ store.getAddress }}</h4>
-    <h4>Phone Number: {{ store.getPhoneNumber }}</h4>
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <h3>{{ store.getName }}</h3>
 
-    <h4><a href="/stores"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Stores List</a></h4>
-    <hr>
-    <h3>Brands available at this store:</h3>
-    {% if store_brands is not empty %}
-        {% for brand in store_brands %}
-        <h4><a href="/brand/{{ brand.getId }}">{{ brand.getName }}</a>
-            <div class="inline-forms">
-                <form action="/remove_brand/{{ store.getId }}/{{ brand.getId }}" method="post" style="display: inline">
-                    <button type="submit" class="btn btn-warning"><i class="fa fa-minus-square" aria-hidden="true"></i> Remove from store</button>
-                </form>
-            </div>
-        </h4>
-        {% endfor %}
-        <br><br>
-        <form action="/remove_all_brands/{{ store.getId }}" method="post">
-            <button type="submit" class="btn btn-danger"><i class="fa fa-minus-square" aria-hidden="true"></i> Remove All Brands</button>
-        </form>
-    {% else %}
-        <h4>There are no brands currently offered at this store!</h4>
-    {% endif %}
+                            <h4>Address: {{ store.getAddress }}</h4>
+                            <h4>Phone Number: {{ store.getPhoneNumber }}</h4>
 
-{% endblock %}
-
-{% block rightsection %}
-
-    <h3>All shoe brands:</h3>
-
-    <h4><a href="/brands">Add a Brand</a></h4>
-    <hr>
-    {% if brands is not empty %}
-        {% for brand in brands %}
-            <h4><a href="/brand/{{ brand.getId }}">{{ brand.getName }}</a>
-
-                <div class="inline-forms">
-                    <form action="/add_brand/{{ store.getId }}/{{ brand.getId }}" method="post">
-                        <button type="submit" class="btn btn-info" id="add-brand-button"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Brand to Store</button>
-                    </form>
+                            <h4><a href="/stores"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Stores List</a></h4>
+                            <hr>
+                            <h3>Brands available at this store:</h3>
+                            {% if store_brands is not empty %}
+                                {% for brand in store_brands %}
+                                <h4><a href="/brand/{{ brand.getId }}">{{ brand.getName }}</a>
+                                    <div class="inline-forms">
+                                        <form action="/remove_brand/{{ store.getId }}/{{ brand.getId }}" method="post" style="display: inline">
+                                            <button type="submit" class="btn btn-warning"><i class="fa fa-minus-square" aria-hidden="true"></i> Remove from store</button>
+                                        </form>
+                                    </div>
+                                </h4>
+                                {% endfor %}
+                                <br><br>
+                                <form action="/remove_all_brands/{{ store.getId }}" method="post">
+                                    <button type="submit" class="btn btn-danger"><i class="fa fa-minus-square" aria-hidden="true"></i> Remove All Brands</button>
+                                </form>
+                            {% else %}
+                                <h4>There are no brands currently offered at this store!</h4>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
-            </h4>
-        {% endfor %}
-    {% else %}
-        <h4>There are no brands currently in the database.</h4>
-    {% endif %}
+                <div class="col-lg-5">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <h3>All shoe brands:</h3>
 
-{% endblock %}
+                            <h4><a href="/brands">Add a Brand</a></h4>
+                            <hr>
+                            {% if brands is not empty %}
+                                {% for brand in brands %}
+                                    <h4><a href="/brand/{{ brand.getId }}">{{ brand.getName }}</a>
+
+                                        <div class="inline-forms">
+                                            <form action="/add_brand/{{ store.getId }}/{{ brand.getId }}" method="post">
+                                                <button type="submit" class="btn btn-info" id="add-brand-button"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Brand to Store</button>
+                                            </form>
+                                        </div>
+                                    </h4>
+                                {% endfor %}
+                            {% else %}
+                                <h4>There are no brands currently in the database.</h4>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include '/components/footer.html.twig' %}
+    </body>
+
+</html>

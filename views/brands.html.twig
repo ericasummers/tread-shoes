@@ -1,40 +1,58 @@
-{% extends "tread_template.html.twig" %}
+<!DOCTYPE html>
+<html>
+    {% include '/components/header.html.twig' %}
+    <body>
+        <div class="container">
+            {% include '/components/navbar.html.twig' %}
 
-{% block leftsection %}
 
-    <h3>Tread Brands</h3>
+            <h1><a href="/">Welcome to the Tread Shoes Database</a></h1>
 
-    {% if brands is not empty %}
-        {% for brand in brands %}
-            <h4><a href="/brand/{{ brand.getId }}">{{ brand.getName }}</a>
-                <div class="inline-forms">
-                    <form action="/brand/{{ brand.getId }}/edit" method="post" style="display: inline">
-                        <button type="submit" class="btn btn-success"><i class="fa fa-pencil-square" aria-hidden="true"></i> Update</button>
-                    </form>
-                    <form action="/brand/{{ brand.getId }}" method="post" style="display: inline">
-                        <input type="hidden" name="_method" value="delete">
-                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
-                    </form>
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <h3>Tread Brands</h3>
+
+                            {% if brands is not empty %}
+                                {% for brand in brands %}
+                                    <h4><a href="/brand/{{ brand.getId }}">{{ brand.getName }}</a>
+                                        <div class="inline-forms">
+                                            <form action="/brand/{{ brand.getId }}/edit" method="post" style="display: inline">
+                                                <button type="submit" class="btn btn-success"><i class="fa fa-pencil-square" aria-hidden="true"></i> Update</button>
+                                            </form>
+                                            <form action="/brand/{{ brand.getId }}" method="post" style="display: inline">
+                                                <input type="hidden" name="_method" value="delete">
+                                                <button type="submit" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                                            </form>
+                                        </div>
+                                    </h4>
+                                {% endfor %}
+                            {% else %}
+                                <h4>There are no brands currently in the database.</h4>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
-            </h4>
-        {% endfor %}
-    {% else %}
-        <h4>There are no brands currently in the database.</h4>
-    {% endif %}
+                <div class="col-lg-5">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <h4>Add a Brand:</h4>
 
-{% endblock %}
+                            <form action="/add_brand" method="post">
+                                <div class="form-group">
+                                    <label for="name">Brand Name:</label>
+                                    <input type="text" name="name" placeholder="Adidas" class="form-control" required>
+                                </div>
 
-{% block rightsection %}
-
-    <h4>Add a Brand:</h4>
-
-    <form action="/add_brand" method="post">
-        <div class="form-group">
-            <label for="name">Brand Name:</label>
-            <input type="text" name="name" placeholder="Adidas" class="form-control" required>
+                                    <button type="submit" class="btn btn-info"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Brand!</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        {% include '/components/footer.html.twig' %}
+    </body>
 
-            <button type="submit" class="btn btn-info"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Brand!</button>
-    </form>
-
-{% endblock %}
+</html>

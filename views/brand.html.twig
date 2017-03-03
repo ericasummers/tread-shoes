@@ -1,50 +1,72 @@
-{% extends "tread_template.html.twig" %}
+<!DOCTYPE html>
+<html>
+    {% include '/components/header.html.twig' %}
+    <body>
+        <div class="container">
+            {% include '/components/navbar.html.twig' %}
 
-{% block leftsection %}
 
-    <h3>{{ brand.getName }} Brand</h3>
+            <h1><a href="/">Welcome to the Tread Shoes Database</a></h1>
 
-    <h4><a href="/brands"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Brands List</a></h4>
-    <hr>
-    <h3>Stores that carry this brand:</h3>
-    {% if brand_stores is not empty %}
-        {% for store in brand_stores %}
-            <h4><a href="/store/{{ store.getId }}">{{ store.getName }}</a>
-                <div class="inline-forms">
-                    <form action="/remove_store/{{ brand.getId }}/{{ store.getId }}" method="post" style="display: inline">
-                        <button type="submit" class="btn btn-warning"><i class="fa fa-minus-square" aria-hidden="true"></i> Remove Store from this Brand</button>
-                    </form>
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="panel">
+                        <div class="panel-body">
+
+                                <h3>{{ brand.getName }} Brand</h3>
+
+                                <h4><a href="/brands"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Brands List</a></h4>
+                                <hr>
+                                <h3>Stores that carry this brand:</h3>
+                                {% if brand_stores is not empty %}
+                                    {% for store in brand_stores %}
+                                        <h4><a href="/store/{{ store.getId }}">{{ store.getName }}</a>
+                                            <div class="inline-forms">
+                                                <form action="/remove_store/{{ brand.getId }}/{{ store.getId }}" method="post" style="display: inline">
+                                                    <button type="submit" class="btn btn-warning"><i class="fa fa-minus-square" aria-hidden="true"></i> Remove Store from this Brand</button>
+                                                </form>
+                                            </div>
+                                        </h4>
+                                    {% endfor %}
+                                    <br><br>
+                                    <form action="/remove_all_stores/{{ brand.getId }}" method="post" style="display: inline">
+                                        <button type="submit" class="btn btn-danger"><i class="fa fa-minus-square" aria-hidden="true"></i> Remove All Stores</button>
+                                    </form>
+                                {% else %}
+                                    <h4>There are no stores that currently sell this brand!</h4>
+                                {% endif %}
+
+                        </div>
+                    </div>
                 </div>
-            </h4>
-        {% endfor %}
-        <br><br>
-        <form action="/remove_all_stores/{{ brand.getId }}" method="post" style="display: inline">
-            <button type="submit" class="btn btn-danger"><i class="fa fa-minus-square" aria-hidden="true"></i> Remove All Stores</button>
-        </form>
-    {% else %}
-        <h4>There are no stores that currently sell this brand!</h4>
-    {% endif %}
+                <div class="col-lg-5">
+                    <div class="panel">
+                        <div class="panel-body">
 
-{% endblock %}
+                                <h3>All shoe stores:</h3>
 
-{% block rightsection %}
+                                <h4><a href="/stores">Add a Store</a></h4>
+                                <hr>
+                                {% if stores is not empty %}
+                                    {% for store in stores %}
+                                        <h4><a href="/store/{{ store.getId }}">{{ store.getName }}</a>
+                                            <div class="inline-forms">
+                                                <form action="/add_store/{{ brand.getId }}/{{ store.getId }}" method="post" style="display: inline">
+                                                    <button type="submit" class="btn btn-success"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Store to this Brand</button>
+                                                </form>
+                                            </div>
+                                        </h4>
+                                    {% endfor %}
+                                {% else %}
+                                    <h4>There are no stores currently in the database.</h4>
+                                {% endif %}
 
-    <h3>All shoe stores:</h3>
-
-    <h4><a href="/stores">Add a Store</a></h4>
-    <hr>
-    {% if stores is not empty %}
-        {% for store in stores %}
-            <h4><a href="/store/{{ store.getId }}">{{ store.getName }}</a>
-                <div class="inline-forms">
-                    <form action="/add_store/{{ brand.getId }}/{{ store.getId }}" method="post" style="display: inline">
-                        <button type="submit" class="btn btn-success"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Store to this Brand</button>
-                    </form>
+                        </div>
+                    </div>
                 </div>
-            </h4>
-        {% endfor %}
-    {% else %}
-        <h4>There are no stores currently in the database.</h4>
-    {% endif %}
+            </div>
+        </div>
+        {% include '/components/footer.html.twig' %}
+    </body>
 
-{% endblock %}
+</html>
