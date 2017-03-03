@@ -139,7 +139,7 @@
 
             $new_brand->addStore($new_store);
             $new_brand->addStore($new_store2);
-            $new_brand->removeAllStoresStore();
+            $new_brand->removeAllStores();
             $result = $new_brand->getStores();
 
             $this->assertEquals([], $result);

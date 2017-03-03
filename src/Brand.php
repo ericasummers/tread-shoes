@@ -108,7 +108,7 @@
 
         function removeAllStores()
         {
-            
+            $GLOBALS['DB']->exec("DELETE FROM stores_brands WHERE brand_id = {$this->getId()};");
         }
 
     }
