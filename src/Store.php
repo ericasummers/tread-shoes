@@ -84,6 +84,18 @@
             $GLOBALS['DB']->exec("DELETE FROM stores;");
         }
 
+        static function find($search_id)
+        {
+            $found_store = null;
+            $query = $GLOBALS['DB']->query("SELECT * FROM stores WHERE id = {$search_id};");
+            $rs = $query->fetchAll(PDO::FETCH_ASSOC);
+            $name = $rs[0]['name'];
+            $address = $rs[0]['address'];
+            $phone_number = $rs[0]['phone_number'];
+            $id = $rs[0]['id'];
+            return $found_store = new Store($name, $address, $phone_number, $id);
+        }
+
     }
 
 
