@@ -139,10 +139,6 @@
             $GLOBALS['DB']->exec("DELETE FROM stores_brands WHERE store_id = {$this->getId()};");
         }
 
-        function getBrandsAvailable()
-        {
-            
-        }
 
     }
 
