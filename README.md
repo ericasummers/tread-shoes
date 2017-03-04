@@ -17,7 +17,7 @@ _This web page allows a user to input a new shoe store, view a list of current s
 1. _Fork and clone this repository from_ [gitHub]https://github.com/ericaw21/tread-shoes.
 2. Navigate to the root directory of the project in which ever CLI shell you are using and run the command: `composer install`.
 3. To run tests enter `composer test` in terminal.
-4. Start server with MAMP and make sure your mySQL server is set to 3306.
+4. Start server with MAMP and make sure your mySQL server is set to 8889.
 5. Open phpMyAdmin and import the database zip files named shoes.sql.zip and shoes_test.sql.zip located in the project folder to import the databases needed.
 6. Create a local server in the /web directory within the project folder using the command: php -S localhost:8000 (assuming you are using a mac), or php -S localhost:8888 (if using windows). {Note: This step is not necessary if Apache server is working correctly with htaccess file.}
 7. Open the directory http://localhost:8000/ (if on a mac) or http://localhost:8888/ (if on windows pc) in any standard web browser.
